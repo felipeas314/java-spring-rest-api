@@ -7,12 +7,17 @@ public class ResponseDTO<E> {
 	private String status;
 
 	private String message;
-	
+
 	public ResponseDTO() {
-		
+
 	}
-	
-	public ResponseDTO(E data,String status,String message) {
+
+	public ResponseDTO(String status,String message) {
+		this.status = status;
+		this.message = message;
+	}
+
+	public ResponseDTO(E data, String status, String message) {
 		this.data = data;
 		this.status = status;
 		this.message = message;
