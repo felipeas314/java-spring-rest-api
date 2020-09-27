@@ -25,7 +25,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 		body.put("timestamp", LocalDate.now());
 		body.put("status", status.value());
 
-		List<String> errors = ex.getBindingResult().getFieldErrors().stream().map(x -> x.getDefaultMessage())
+		List<String> errors = ex.getBindingResult().getFieldErrors().stream().map(x -> x.getField()+ " " + x.getDefaultMessage())
 				.collect(Collectors.toList());
 
 		body.put("errors", errors);

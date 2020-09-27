@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Author {
@@ -15,8 +18,10 @@ public class Author {
 	@GeneratedValue
 	private Integer id;
 
+	@NotBlank
 	private String name;
 
+	@NotBlank
 	private String email;
 
 	@OneToMany(cascade = CascadeType.ALL,
