@@ -7,6 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 public class Music {
 
@@ -20,6 +25,7 @@ public class Music {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "author_id")
+//	@JsonManagedReference
 	private Author author;
 
 	@Override

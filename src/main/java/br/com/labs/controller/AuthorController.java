@@ -1,11 +1,14 @@
 package br.com.labs.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +59,15 @@ public class AuthorController {
 	
 		ResponseDTO<Author> response = new ResponseDTO<>(author,"200","Author update");
 		
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping
+	public ResponseEntity<?> list(@PageableDefault(page = 0, size = 20) Pageable pageable){
+		Page<Author> authors = authorService.find(pageable);
+		
+		ResponseDTO<Page<Author>> response = new ResponseDTO<>(authors,"qwer","asdf");
+	
 		return ResponseEntity.ok(response);
 	}
 }
